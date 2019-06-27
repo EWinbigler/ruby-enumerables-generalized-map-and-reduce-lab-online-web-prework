@@ -1,62 +1,25 @@
 # Your Code Here
 def map(array)
-  array = [1, 2, 3, -9]
-
-   map = array.map { |n| n * -1}
+  new_array = []
+  i = 0
+  while i < array.length do
+    new_array << yield(array[i])
+    i += 1
+  end
+  new_array
 end
 
- def map(dune)
-  dune = ["paul", "gurney", "vladimir", "jessica", "chani"]
-
-   map = dune.map { |n| n}
+ def reduce(source_array, starting_point=nil)
+  if starting_point
+    total = starting_point
+    i = 0
+  else
+    total = source_array[0]
+    i = 1
+  end
+  while i < source_array.length
+    total = yield(total, source_array[i])
+    i += 1
+  end
+  total
 end
-
- def map(array)
-  array = [1, 2, 3, -9]
-
-   map = array.map { |n| n * 2}
-end
-
- def map(array)
-  array [1, 2, 3, -9]
-
-   map = array.map { |n| n * n }
-end
-
- def reduce(source_array)
-  source_array = [1, 2, 3]
-
-   reduce = source_array.reduce { |memo, n| memo + n}
-end
-
- def reduce(source_array, starting_point)
-  source_array = [1, 2, 3]
-  starting_point = 100
-
-   reduce = source_array.reduce(100) { |memo, n| memo + n}
-end
-
- def reduce(source_array)
-  source_array = [1, 2, true, "razmatazz"]
-
-   reduce = source_array.reduce { |memo, n| memo && n}
-end
-
- def reduce(source_array)
-  source_array = [1, 2, true, "razmatazz", false]
-  total = false
-
-   reduce = source_array.reduce { |falsey| total = false}
-end
-
- def reduce(source_array)
-  source_array = [ false, nil, nil, nil, true]
-
-   reduce = source_array.reduce(true) {|n| n}
-end
-
- def reduce(source_array)
-  source_array = [ false, nil, nil, nil]
-
-   reduce = source_array.reduce(false) { |n| n }
-end 
